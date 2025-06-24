@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio Trivia</title>
+</head>
+<body>
+ <div id="aplicacion">
+       <section id="seccion-configuracion">
+      <h1> Desafio Trivia</h1>
+      <form id="formulario-configuracion">
+        <label for="nombre-jugador"> Nombre del jugador:</label>
+        <input type="text" id="nombre-jugador" required minlength="2" maxlength="20" placeholder="Tu nombre">
+
+        <label for="cantidad-preguntas">Cantidad de preguntas (5-20):</label>
+        <input type="number" id="cantidad-preguntas" min="5" max="20" required>
+
+        <label for="dificultad"> Nivel de dificultad:</label>
+        <select id="dificultad">
+          <option value="easy">Fácil</option>
+          <option value="medium">Medio</option>
+          <option value="hard">Difícil</option>
+        </select>
+
+
+        
