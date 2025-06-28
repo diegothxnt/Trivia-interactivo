@@ -1,0 +1,33 @@
+
+
+:root {
+  --primario: #0abb45;
+  --acento: #ff9800;
+  --claro: #f4f6f9;
+  --correcto: #4caf50;
+  --incorrecto: #f44336;
+  --fuente: 'Segoe UI', sans-serif;
+  
+}
+
+
+body {
+  font-family: var(--fuente);
+  background: linear-gradient(to right, #2cc905, #04be42);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+#aplicacion {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.8s ease-in-out;
+}
+
