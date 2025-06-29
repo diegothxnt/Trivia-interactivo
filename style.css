@@ -191,3 +191,60 @@ button:hover {
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+#botones-respuesta button {
+  display: block;
+  margin: 0.5rem auto;
+  width: 100%;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+#botones-respuesta button:hover {
+  background: #e0e0e0;
+}
+
+#botones-respuesta button.correcta {
+  background-color: var(--correcto);
+}
+
+#botones-respuesta button.incorrecta {
+  background-color: var(--incorrecto);
+  
+}
+
+#temporizador.tiempo-bajo {
+  color: var(--incorrecto);
+  animation: parpadeo 1s steps(2, start) infinite;
+}
+
+#retroalimentacion {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#seccion-resultados {
+  text-align: center;
+}
+
+#resumen-resultados {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.acciones-resultados button {
+  margin-top: 1rem;
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+}
