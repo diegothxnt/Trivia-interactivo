@@ -109,3 +109,85 @@ body {
     opacity: 0;
   }
 }
+#aplicacion{ 
+  background: rgba(6, 118, 146, 0.85);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  animation: aparecer 0.8s ease-in-out;
+}
+
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.logo-trivia {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--primario);
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--primario);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #163d60;
+}
+
+.hidden {
+  display: none;
+}
+
+#seccion-juego {
+  text-align: center;
+}
+
+.info-juego {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: var(--primario);
+}
+
+#texto-pregunta {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
