@@ -37,3 +37,9 @@ Aplicación web **interactiva** que simula un juego de trivia para practicar **p
 - Porcentaje de éxito.
 - Tiempo promedio por pregunta.
 - Botones para **reiniciar juego** o **cambiar configuración**.
+
+  ## 👤 Autor
+
+**Diego Rojas**  
+Proyecto para Lenguaje de clientes web.
+2025
