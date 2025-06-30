@@ -66,4 +66,112 @@ formulario.addEventListener("submit", async (e) => {
     location.reload();
   }
 });
+function mostrarPregunta() {
+  clearInterval(temporizador);
+  retroalimentacion.textContent = "";
+  tiempoRestante = 20;
+  actualizarTemporizador();
+
+  const p = preguntas[indiceActual];
+  const respuestas = [...p.incorrect_answers, p.correct_answer];
+  respuestas.sort(() => Math.random() - 0.5);
+
+  progreso.textContent = `Pregunta ${indiceActual + 1} de ${preguntas.length}`;
+  textoPregunta.innerHTML = decodificar(p.question);
+  botonesRespuesta.innerHTML = "";
+
+  respuestas.forEach((r) => {
+    const btn = document.createElement("button");
+    btn.innerHTML = decodificar(r);
+    btn.addEventListener("click", () => seleccionarRespuesta(r === p.correct_answer, btn));
+    botonesRespuesta.appendChild(btn);
+  });
+
+  temporizador = setInterval(() => {
+    tiempoRestante--;
+    actualizarTemporizador();
+    if (tiempoRestante <= 0) {
+      clearInterval(temporizador);
+      tiempoTotal += 20;
+      mostrarRetroalimentacion(false);
+      setTimeout(siguientePregunta, 2000);
+    }
+  }, 1000);
+}
+
+function seleccionarRespuesta(correcta, boton) {
+  clearInterval(temporizador);
+  const botones = botonesRespuesta.querySelectorAll("button");
+  botones.forEach((b) => b.disabled = true);
+  if (correcta) {
+    puntaje += 10;
+    aciertos++;
+    boton.classList.add("correcta");
+  } else {
+    boton.classList.add("incorrecta");
+    const correcto = [...botones].find(b => b.innerHTML === decodificar(preguntas[indiceActual].correct_answer));
+    if (correcto) correcto.classList.add("correcta");
+  }
+  tiempoTotal += (20 - tiempoRestante);
+  setTimeout(siguientePregunta, 1500);
+}
+
+function siguientePregunta() {
+  indiceActual++;
+  if (indiceActual < preguntas.length) {
+    mostrarPregunta();
+  } else {
+    mostrarResultados();
+  }
+}
+
+function actualizarTemporizador() {
+  temporizadorDisplay.textContent = `Tiempo: ${tiempoRestante}s`;
+  if (tiempoRestante <= 5) {
+    temporizadorDisplay.classList.add("tiempo-bajo");
+  } else {
+    temporizadorDisplay.classList.remove("tiempo-bajo");
+  }
+}
+
+function mostrarRetroalimentacion(correcta) {
+  retroalimentacion.textContent = correcta ? "¡Correcto!" : "Tiempo agotado o incorrecto.";
+}
+
+function mostrarResultados() {
+  seccionJuego.classList.add("hidden");
+  seccionResultados.classList.remove("hidden");
+
+  const promedio = (tiempoTotal / preguntas.length).toFixed(2);
+  const porcentaje = ((aciertos / preguntas.length) * 100).toFixed(1);
+
+  resumenResultados.innerHTML = `
+    <strong>${configuracion.nombre}</strong><br>
+    Puntos: <strong>${puntaje}</strong><br>
+    Aciertos: <strong>${aciertos}</strong> de ${preguntas.length}<br>
+    Porcentaje: <strong>${porcentaje}%</strong><br>
+    Tiempo promedio: <strong>${promedio}s</strong>
+  `;
+}
+
+botonReiniciar.addEventListener("click", () => {
+  seccionResultados.classList.add("hidden");
+  seccionJuego.classList.remove("hidden");
+  indiceActual = 0;
+  puntaje = 0;
+  aciertos = 0;
+  tiempoTotal = 0;
+  mostrarPregunta();
+});
+
+botonNuevaConfiguracion.addEventListener("click", () => {
+  seccionResultados.classList.add("hidden");
+  seccionConfiguracion.classList.remove("hidden");
+});
+
+function decodificar(str) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = str;
+  return txt.value;
+}
 
